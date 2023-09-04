@@ -1,0 +1,153 @@
+{
+	"info": {
+		"_postman_id": "109da6d8-7693-4283-8d7e-fef49e5ebd65",
+		"name": "release-tracker",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Save release",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"releaseId\", jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n         \"name\": \"release\",\n         \"description\": \"description\",\n         \"status\": \"CREATED\",\n         \"releaseDate\": \"2023-09-03\",\n         \"createdAt\": \"2023-09-03T04:05:06\",\n         \"lastUpdateAt\": \"2023-09-03T04:05:06\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/release",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"release"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get release",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/release/{{releaseId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"release",
+						"{{releaseId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update release",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n             \"status\": \"IN_DEVELOPMENT\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/release/{{releaseId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"release",
+						"{{releaseId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find all with filter",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/release?status=IN_DEVELOPMENT",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"release"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "IN_DEVELOPMENT"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete release",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/release/{{releaseId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"release",
+						"{{releaseId}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

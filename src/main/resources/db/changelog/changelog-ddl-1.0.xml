@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="202308301314" author="ivana.ivanovic">
+        <createTable tableName="rt_release">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="cm_release_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR(25)"/>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="release_date" type="DATE"/>
+            <column name="created_at" type="TIMESTAMP"/>
+            <column name="last_update_at" type="TIMESTAMP"/>
+            <column name="status" type="VARCHAR(25)"/>
+            <column name="version" type="INT8" defaultValue="0"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
